@@ -10,7 +10,7 @@
         <%= title %>
     </title>
 </head>
-
+<!-- Html code css used is Tailwind css -->
 <body class="bg-teal-100">
     <div class="h-full w-full flex items-center justify-center bg-teal-100 font-sans">
         <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-6xl">
@@ -26,6 +26,7 @@
                 </form>
             </div>
             <div class="mt-3">
+                <!-- Iterating over all element in list checking if done flag is et or not then adding element  -->
                 <% todoList.forEach(element=> { %>
                     <% if(element.done !=true){ %>
                         <div class="flex mb-4 items-center">
@@ -44,6 +45,7 @@
                             </form>
                         </div>
                         <% }else{ %>
+                            <!-- if no done is set this element will be added -->
                             <div class="flex mb-4 items-center">
                                 <p class="w-full text-green-600 line-through">
                                     <%= element.desc %>
