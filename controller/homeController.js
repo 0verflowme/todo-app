@@ -1,14 +1,12 @@
-const { ObjectID } = require("bson");
-const { ftruncate } = require("fs");
-const { default: mongoose, ObjectId } = require("mongoose");
 const db = require("../config/mongoose");
-const { collection } = require("../models/todo");
 const Todo = require("../models/todo");
+
+//defining functions of all routes here
 
 function home(req, res) {
   Todo.find({}, (err, todoList) => {
     if (err) {
-      console.error("Error occured in display display todo");
+      console.error("Error occurred in display display todo");
       return;
     }
     return res.render("home", {
@@ -30,30 +28,22 @@ function add(req, res) {
         console.error("Error");
         return;
       }
-      //   console.log(todo);
       return res.redirect("back");
     }
   );
 }
 
 function done(req, res) {
-  //   console.log(req.body.id);
-  //   var filter = { _id: req.body.id };
   var id = req.body.id.trim();
-  Todo.updateOne(
-    { _id: new ObjectID(id) },
-    { $set: { done: true } },
-    (err, todo) => {
-      if (err) {
-        console.log("Something went wring in updating");
-      }
+  Todo.updateOne({ _id: id }, { $set: { done: true } }, (err, todo) => {
+    if (err) {
+      console.log("Something went wring in updating");
     }
-  );
+  });
   return res.redirect("back");
 }
 
 function remove(req, res) {
-  console.log("here");
   var id = req.body.id.trim();
   Todo.deleteOne(
     {
@@ -69,18 +59,12 @@ function remove(req, res) {
 }
 
 function notdone(req, res) {
-  //   console.log(req.body.id);
-  //   var filter = { _id: req.body.id };
   var id = req.body.id.trim();
-  Todo.updateOne(
-    { _id: new ObjectID(id) },
-    { $set: { done: false } },
-    (err, todo) => {
-      if (err) {
-        console.log("Something went wring in updating");
-      }
+  Todo.updateOne({ _id: id }, { $set: { done: false } }, (err, todo) => {
+    if (err) {
+      console.log("Something went wring in updating");
     }
-  );
+  });
   return res.redirect("back");
 }
 

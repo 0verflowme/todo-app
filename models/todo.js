@@ -1,3 +1,4 @@
+//Defining schema and fields for database.
 const mongoose = require("mongoose");
 const totSchema = new mongoose.Schema({
   desc: {

@@ -1,4 +1,4 @@
-
+//Connection to database.
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/todo_list_db");
 
