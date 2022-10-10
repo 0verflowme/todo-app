@@ -4,6 +4,7 @@
   "description": "A simple Todo App made using express for my backend major project 1",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "0verflowme",
